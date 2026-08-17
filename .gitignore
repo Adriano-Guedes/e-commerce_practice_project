@@ -1,0 +1,22 @@
+## Build and output
+bin/
+obj/
+out/
+
+## IDE and tools
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.user
+*.suo
+
+## OS generated
+.DS_Store
+Thumbs.db
+
+## Environment files & Local data
+.env
+localstack-data/
+postgres-data/
