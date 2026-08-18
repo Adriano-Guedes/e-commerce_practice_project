@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="Ecommerce.API/Ecommerce.API.csproj" Id="2287105d-bbc1-4c61-b1ff-bfb54d9608b8" />
+    <Project Path="Ecommerce.Application/Ecommerce.Application.csproj" Id="2939f732-4bd7-4c71-9e33-e97bede96419" />
+    <Project Path="Ecommerce.Domain/Ecommerce.Domain.csproj" Id="2d4b3de4-06e2-4e4d-8ebe-01335c94e373" />
+    <Project Path="Ecommerce.Infrastructure/Ecommerce.Infrastructure.csproj" Id="cfb2af48-cca5-49ea-9c29-8ea396e3a8f3" />
+    <Project Path="Ecommerce.Worker/Ecommerce.Worker.csproj" Id="b0aa7f26-6496-4a4b-b786-06bca329d700" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="Ecommerce.UnitTests/Ecommerce.UnitTests.csproj" Id="f9e3208e-e8e2-4ff8-b025-7c9d9ab9e33a" />
+  </Folder>
+</Solution>
