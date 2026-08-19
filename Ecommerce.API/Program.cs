@@ -1,16 +1,21 @@
+using Ecommerce.Infrastructure.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+#region Add services to the container.
 
+// 1. Injeção de Dependência das Camadas
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#endregion
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Adriano") || app.Environment.IsEnvironment("VH"))
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -18,6 +23,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/notes/">
+    <File Path="commands.txt" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="Ecommerce.API/Ecommerce.API.csproj" Id="2287105d-bbc1-4c61-b1ff-bfb54d9608b8" />
     <Project Path="Ecommerce.Application/Ecommerce.Application.csproj" Id="2939f732-4bd7-4c71-9e33-e97bede96419" />
