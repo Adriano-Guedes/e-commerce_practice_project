@@ -1,16 +1,17 @@
 ﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Interfaces;
+using Ecommerce.Infrastructure.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Domain.Repositories
+namespace Ecommerce.Infrastructure.Repositories
 {
     public class CategoriaRepository : ICategoriaRepository
     {
-        //private readonly EcommerceDbContext _context;
+        private readonly EcommerceDbContext _context;
         public Task<Categoria> AddAsync(Categoria categoria)
         {
             throw new NotImplementedException();
