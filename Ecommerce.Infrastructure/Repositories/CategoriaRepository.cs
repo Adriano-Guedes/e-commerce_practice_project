@@ -12,34 +12,44 @@ namespace Ecommerce.Infrastructure.Repositories
     public class CategoriaRepository : ICategoriaRepository
     {
         private readonly EcommerceDbContext _context;
-        public Task<Categoria> AddAsync(Categoria categoria)
+        public async Task AddAsync(Categoria categoria)
         {
-            throw new NotImplementedException();
+           _context.Add(categoria);
+           await _context.SaveChangesAsync();
         }
 
-        public void DeleteAsync(int id)
+        public async Task UpdateAsync(Categoria categoria)
         {
-            throw new NotImplementedException();
+            _context.Update(categoria);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var categoria = await _context.Categorias.FindAsync(id);
+            if (categoria != null) 
+            {
+                _context.Categorias.Remove(categoria);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public Task<IEnumerable<Categoria>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var categorias = _context.Categorias.ToList();
+            return Task.FromResult<IEnumerable<Categoria>>(categorias);
         }
 
         public Task<Categoria> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var categoria = _context.Categorias.Find(id);
+            return Task.FromResult(categoria);
         }
 
         public Task<bool> GetByNameAsync(string name)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Categoria> UpdateAsync(Categoria categoria)
-        {
-            throw new NotImplementedException();
+            var exists = _context.Categorias.Any(c => c.Nome == name);
+            return Task.FromResult(exists);
         }
     }
 }

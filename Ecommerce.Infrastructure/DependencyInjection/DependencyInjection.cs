@@ -1,4 +1,6 @@
-﻿using Ecommerce.Infrastructure.Data.Context;
+﻿using Ecommerce.Domain.Interfaces;
+using Ecommerce.Infrastructure.Data.Context;
+using Ecommerce.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +20,11 @@ namespace Ecommerce.Infrastructure.DependencyInjection
 
             services.AddDbContext<EcommerceDbContext>(options => options.UseNpgsql(connectionString));
 
-            //services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<IProdutosPedidoRepository, ProdutosPedidoRepository>();
 
             return services;
         }

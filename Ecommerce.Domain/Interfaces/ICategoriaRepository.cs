@@ -12,8 +12,8 @@ namespace Ecommerce.Domain.Interfaces
         Task<IEnumerable<Categoria>> GetAllAsync();
         Task<Categoria> GetByIdAsync(int id);
         Task<bool> GetByNameAsync(string name);
-        Task<Categoria> AddAsync(Categoria categoria);
-        Task<Categoria> UpdateAsync(Categoria categoria);
-        void DeleteAsync(int id);
+        Task AddAsync(Categoria categoria);
+        Task UpdateAsync(Categoria categoria);
+        Task DeleteAsync(int id);
     }
 }
