@@ -1,3 +1,4 @@
+using Ecommerce.Application;
 using Ecommerce.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 #region Add services to the container.
 
 // 1. Injeção de Dependência das Camadas
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
