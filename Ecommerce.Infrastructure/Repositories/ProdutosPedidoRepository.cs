@@ -10,14 +10,12 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Infrastructure.Repositories
 {
-    public class ProdutosPedidoRepository : IProdutosPedidoRepository
+    public class ProdutosPedidoRepository : RepositoryBase<ProdutosPedido>, IProdutosPedidoRepository
     {
         private readonly EcommerceDbContext _context;
-
-        public async Task AddAsync(ProdutosPedido produtosPedido)
+        public ProdutosPedidoRepository(EcommerceDbContext context) : base(context)
         {
-            _context.Add(produtosPedido);
-            await _context.SaveChangesAsync();
+            _context = context;
         }
 
         public async Task<IEnumerable<ProdutosPedido>> GetAllByPedidoIdAsync(Guid pedidoId)

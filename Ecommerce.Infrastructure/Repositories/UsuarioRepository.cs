@@ -9,35 +9,12 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Infrastructure.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
     {
         private readonly EcommerceDbContext _context;
-        public async Task AddAsync(Usuario usuario)
+        public UsuarioRepository(EcommerceDbContext context) : base(context)
         {
-            _context.Add(usuario);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateAsync(Usuario usuario)
-        {
-            _context.Update(usuario);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteAsync(int id)
-        {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario != null)
-            {
-                _context.Usuarios.Remove(usuario);
-                await _context.SaveChangesAsync();
-            }
-        }
-
-        public Task<IEnumerable<Usuario>> GetAllAsync()
-        {
-            var usuarios = _context.Usuarios.ToList();
-            return Task.FromResult<IEnumerable<Usuario>>(usuarios);
+            _context = context;
         }
 
         public Task<IEnumerable<Usuario>> GetAllByPapelAsync(string papel)
@@ -46,11 +23,6 @@ namespace Ecommerce.Infrastructure.Repositories
             return Task.FromResult<IEnumerable<Usuario>>(usuarios);
         }
 
-        public Task<Usuario> GetByIdAsync(int id)
-        {
-            var usuario = _context.Usuarios.Find(id);
-            return Task.FromResult(usuario);
-        }
         public Task<Usuario> GetByCpfAsync(string cpf)
         {
             var usuario = _context.Usuarios.FirstOrDefault(u => u.Cpf == cpf   );

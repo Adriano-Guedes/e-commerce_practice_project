@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Domain.Interfaces
 {
-    public interface IUsuarioRepository
+    public interface IUsuarioRepository : IRepositoryBase<Usuario>
     {
-        Task<IEnumerable<Usuario>> GetAllAsync();
         Task<IEnumerable<Usuario>> GetAllByPapelAsync(string papel);
-        Task<Usuario> GetByIdAsync(int id);
         Task<Usuario> GetByCpfAsync(string cpf);
         Task<bool> GetByNameAsync(string name);
-        Task AddAsync(Usuario usuario);
-        Task UpdateAsync(Usuario usuario);
-        Task DeleteAsync(int id);
     }
 }

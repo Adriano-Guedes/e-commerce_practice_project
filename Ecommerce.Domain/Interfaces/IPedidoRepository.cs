@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Domain.Interfaces
 {
-    public interface IPedidoRepository
+    public interface IPedidoRepository : IRepositoryBase<Pedido>
     {
-        Task<IEnumerable<Pedido>> GetAllAsync();
-        Task<Pedido> GetByIdAsync(Guid id);
         Task<IEnumerable<Pedido>> GetByUsuarioIdAsync(Guid usuarioId);
-        Task AddAsync(Pedido pedido);
     }
 }
 

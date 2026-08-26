@@ -9,19 +9,13 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Infrastructure.Repositories
 {
-    public class PedidoRepository : IPedidoRepository
+    public class PedidoRepository : RepositoryBase<Pedido>, IPedidoRepository
     {
         private readonly EcommerceDbContext _context;
-        public async Task AddAsync(Pedido pedido)
-        {
-            _context.Add(pedido);
-            await _context.SaveChangesAsync();
-        }
 
-        public Task<IEnumerable<Pedido>> GetAllAsync()
+        public PedidoRepository(EcommerceDbContext context) : base(context)
         {
-            var pedidos = _context.Pedidos.ToList();
-            return Task.FromResult<IEnumerable<Pedido>>(pedidos);
+            _context = context;
         }
 
         public Task<IEnumerable<Pedido>> GetByUsuarioIdAsync(Guid usuarioId)
@@ -29,12 +23,5 @@ namespace Ecommerce.Infrastructure.Repositories
             var pedidos = _context.Pedidos.Where(p => p.ChaveUsuario == usuarioId).ToList();
             return Task.FromResult<IEnumerable<Pedido>>(pedidos);
         }
-
-        public Task<Pedido> GetByIdAsync(Guid id)
-        {
-            var pedido = _context.Pedidos.Find(id);
-            return Task.FromResult(pedido);
-        }
-
     }
 }

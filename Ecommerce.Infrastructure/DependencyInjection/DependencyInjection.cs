@@ -18,13 +18,21 @@ namespace Ecommerce.Infrastructure.DependencyInjection
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+            #region DbContext
             services.AddDbContext<EcommerceDbContext>(options => options.UseNpgsql(connectionString));
+            #endregion
 
+            #region Repositories
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<IProdutosPedidoRepository, ProdutosPedidoRepository>();
+            #endregion
+
+            #region UnitOfWork
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            #endregion
 
             return services;
         }

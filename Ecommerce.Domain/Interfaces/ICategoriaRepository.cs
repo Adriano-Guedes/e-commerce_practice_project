@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Domain.Interfaces
 {
-    public interface ICategoriaRepository
+    public interface ICategoriaRepository : IRepositoryBase<Categoria>
     {
-        Task<IEnumerable<Categoria>> GetAllAsync();
-        Task<Categoria> GetByIdAsync(int id);
-        Task<bool> GetByNameAsync(string name);
-        Task AddAsync(Categoria categoria);
-        Task UpdateAsync(Categoria categoria);
-        Task DeleteAsync(int id);
+        Task<bool> ExistsByNameAsync(string name, int? ignoreId = null, CancellationToken ct = default);
     }
 }
